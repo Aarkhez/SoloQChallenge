@@ -3,9 +3,20 @@ import axios from 'axios';
 import PLAYERS from '../models/mock-player';
 import player from '../models/player';
 import GetTeamRank from './GetTeamRank';
-import SoloQChallengelogo from './soloqchallengelogo.webp';
+import SoloQChallengelogo from './img/soloqchallengelogo.webp';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
+import twitchlogo from './img/twitch.png';
+import imgIron from './img/rank/Rank=Iron.png';
+import imgBronze from './img/rank/Rank=Bronze.png';
+import imgSilver from './img/rank/Rank=Silver.png';
+import imgGold from './img/rank/Rank=Gold.png';
+import imgPlatinum from './img/rank/Rank=Platinum.png';
+import imgEmerald from './img/rank/Rank=Emerald.png';
+import imgDiamond from './img/rank/Rank=Diamond.png';
+import imgMaster from './img/rank/Rank=Master.png';
+import imgGrandmaster from './img/rank/Rank=Grandmaster.png';
+import imgChallenger from './img/rank/Rank=Challenger.png';
 
 
 const GetDataAccount = () => {
@@ -37,6 +48,19 @@ const GetDataAccount = () => {
         'MASTER': 8,
         'GRANDMASTER': 9,
         'CHALLENGER': 10,
+    };
+
+    const tierImages = {
+        'IRON': imgIron,
+        'BRONZE': imgBronze,
+        'SILVER': imgSilver,
+        'GOLD': imgGold,
+        'PLATINUM': imgPlatinum,
+        'EMERALD': imgEmerald,
+        'DIAMOND': imgDiamond,
+        'MASTER': imgMaster,
+        'GRANDMASTER': imgGrandmaster,
+        'CHALLENGER': imgChallenger,
     };
     
     const rankOrder = {
@@ -197,13 +221,21 @@ const GetDataAccount = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="text-white text-sm font-light">
-                                    {summonerData.map((data, index) => (
+                                    {summonerData.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; team: string; wins: number; losses: number; twitch: string | null }, index) => (
                                         <tr key={index} className="border-b font-normal text-lg border-gray-700">
                                             <td className="py-3 px-6">{index + 1}</td> {/* Afficher le classement */}
                                             <td className="py-3 px-6">{data.name}</td>
                                             <td className="py-3 px-6">{data.pseudo}#{data.tag}</td>
                                             <td className="py-3 px-6">{data.team}</td>
-                                            <td className="py-3 px-6">{data.tier} {data.rank} ({data.leaguePoints} LP)</td>
+                                            <td className="py-3 px-6 flex items-center">
+                                                {/* Afficher l'image du tier */}
+                                                <img
+                                                    src={tierImages[data.tier] || ''} // Utilise une image par défaut si le tier n'est pas trouvé
+                                                    alt={`${data.tier} logo`}
+                                                    className="h-6 w-6 mr-2" // Taille de l'image
+                                                />
+                                                {data.tier} {data.rank} ({data.leaguePoints} LP)
+                                            </td>
                                             <td className="py-3 px-6">{data.wins + data.losses}</td>
                                             <td className="py-3 px-6">{data.wins}</td>
                                             <td className="py-3 px-6">{data.losses}</td>
@@ -211,7 +243,11 @@ const GetDataAccount = () => {
                                             <td className="py-3 px-6">
                                                 {data.twitch ? (
                                                     <a href={data.twitch} target="_blank" rel="noreferrer">
-                                                        Twitch
+                                                        <img
+                                                    src={twitchlogo} // Utilise une image par défaut si le tier n'est pas trouvé
+                                                    alt={`twitch logo`}
+                                                    className="h-6 w-6 mr-2" // Taille de l'image
+                                                />
                                                     </a>
                                                 ) : (
                                                     'N/A'
