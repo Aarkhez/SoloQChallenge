@@ -25,7 +25,7 @@ export const PLAYERS: player[] = [
         pseudo: "RIENATEGRAbdh",
         tag: "2433",
         idLol: "BPctBmtILojyZhrug7d32wTHrMKY7t1kVNzxIU7B6GdBB6-46JKsjzz9XA",
-        team: "Team 1",
+        team: "Team Paqueta",
         twitch: "https://www.twitch.tv/viattv",
     },
     {
@@ -43,7 +43,7 @@ export const PLAYERS: player[] = [
         pseudo: "Haklaynanno",
         tag: "6035",
         idLol: "23DgXUZX37oIngx-FpQTyqg4EzkfVoIpEd1N0IVPFpLFaQsQ7qYM0c2QBg",
-        team: "Team 1",
+        team: "Team Paqueta",
         twitch: "",
     },
     {
