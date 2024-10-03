@@ -186,7 +186,7 @@ const GetDataAccount = () => {
             {/* Pop-up */}
             {/* Deuxième conteneur pour le tableau des joueurs */}
             <div className="flex items-center justify-center mx-auto mt-12 w-full px-4">
-                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 bg-slate-900 lg:bg-slate-900">
+                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 bg-slate-900 sm:bg-slate-900 lg:bg-slate-900">
                     {/* Titre du classement */}
                     <div className="flex flex-col lg:flex-row justify-center items-center mb-4">
                         <h1 className="mx-auto text-3xl font-bold text-white text-center w-full lg:w-auto">
