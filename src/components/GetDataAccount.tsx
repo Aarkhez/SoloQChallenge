@@ -15,8 +15,9 @@ const GetDataAccount = () => {
     const [loading, setLoading] = useState<boolean>(false); // État de chargement
     const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
 
-    const API_KEY = process.env.NEXT_PUBLIC_API_KEY; // ou import.meta.env.VITE_API_KEY
-    console.log("API_KEY:", API_KEY); // Affiche la clé API dans la console
+    const API_KEY = import.meta.env.VITE_API_KEY; // Pour récupérer la clé API
+    console.log("API_KEY:", API_KEY); // Log pour vérifier que ça fonctionne
+
 
     // Ordre des tiers et rangs
     const tierOrder = {
@@ -155,7 +156,7 @@ const GetDataAccount = () => {
             {/* Pop-up */}
             {/* Deuxième conteneur pour le tableau des joueurs */}
             <div className="flex items-center justify-center mx-auto mt-12 w-full px-4">
-                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 lg:bg-slate-900">
+                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 bg-slate-900 lg:bg-slate-900">
                     {/* Titre du classement */}
                     <div className="flex flex-col lg:flex-row justify-center items-center mb-4">
                         <h1 className="mx-auto text-3xl font-bold text-white text-center w-full lg:w-auto">
