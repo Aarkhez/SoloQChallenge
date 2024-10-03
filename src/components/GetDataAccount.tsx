@@ -18,6 +18,12 @@ const GetDataAccount = () => {
     const API_KEY = import.meta.env.VITE_API_KEY; // Pour récupérer la clé API
     console.log("API_KEY:", API_KEY); // Log pour vérifier que ça fonctionne
 
+    try {
+        const logoPath = require('../../src/assets/soloqchallengelogo.webp');
+        console.log("Logo path exists:", logoPath);
+    } catch (error) {
+        console.error("Logo path does not exist:", error);
+    }
 
     // Ordre des tiers et rangs
     const tierOrder = {
