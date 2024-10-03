@@ -16,7 +16,7 @@ export const PLAYERS: player[] = [
         pseudo: "Maroui",
         tag: "2206",
         idLol: "SXgh7CU0nq_xAOBLQmzg-vzGaRMVB5qgNJJTK-jNZ4CnjFGWHUpxiB2JSQ",
-        team : "Satoru Gojo",
+        team : "Nah I'd win",
         twitch: "",
     },
     {
@@ -34,7 +34,7 @@ export const PLAYERS: player[] = [
         pseudo: "Jeong Ji hoon",
         tag: "정지훈",
         idLol: "2ZbU229Baj9WaWPSIhzXksTzZkMXsMYHNcV4x_2YkmlCiCLbM3FzK668fg",
-        team: "Satoru Gojo",
+        team: "Nah I'd win",
         twitch: "https://www.twitch.tv/weezer___",
     },
     {
