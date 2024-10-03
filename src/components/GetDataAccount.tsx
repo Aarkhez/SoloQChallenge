@@ -19,7 +19,7 @@ const GetDataAccount = () => {
     console.log("API_KEY:", API_KEY); // Log pour vérifier que ça fonctionne
 
     try {
-        const logoPath = require('../../src/assets/soloqchallengelogo.webp');
+        const logoPath = require('./GetDataAccount.tsx');
         console.log("Logo path exists:", logoPath);
     } catch (error) {
         console.error("Logo path does not exist:", error);
