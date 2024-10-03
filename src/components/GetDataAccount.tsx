@@ -7,7 +7,6 @@ import GetTeamRank from './GetTeamRank';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
 
-const API_KEY = import.meta.env.VITE_API_KEY; // Remplace avec ta clé API
 
 const GetDataAccount = () => {
     const [summonerData, setSummonerData] = useState<any[]>([]); // Pour stocker les données récupérées
@@ -15,6 +14,9 @@ const GetDataAccount = () => {
     const [players] = useState<player[]>(PLAYERS); // Initialisation directe avec les joueurs
     const [loading, setLoading] = useState<boolean>(false); // État de chargement
     const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
+
+    const API_KEY = process.env.API_KEY; // ou import.meta.env.VITE_API_KEY
+    console.log("API_KEY:", API_KEY); // Affiche la clé API dans la console
 
     // Ordre des tiers et rangs
     const tierOrder = {
