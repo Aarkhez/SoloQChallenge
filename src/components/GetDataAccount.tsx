@@ -3,7 +3,7 @@ import axios from 'axios';
 import PLAYERS from '../models/mock-player';
 import player from '../models/player';
 import GetTeamRank from './GetTeamRank';
-import SoloQChallengelogo from '../../src/assets/soloqchallengelogo.webp';
+//import SoloQChallengelogo from '../../src/assets/soloqchallengelogo.webp';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
 
@@ -150,7 +150,7 @@ const GetDataAccount = () => {
             <div className="w-full">
                 <div className='flex flex-col lg:flex-row h-auto lg:h-96 pb-12 w-full justify-between px-4 lg:px-16 mt-10'>
                     {/* Image responsive */}
-                    <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallengelogo} />
+                    
                     <Timer />
                     {/* Classement des équipes */}
                     <div className="mt-6 lg:mt-0 w-full lg:w-3/12">
