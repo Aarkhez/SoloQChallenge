@@ -15,7 +15,7 @@ const GetDataAccount = () => {
     const [loading, setLoading] = useState<boolean>(false); // État de chargement
     const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
 
-    const API_KEY = process.env.API_KEY; // ou import.meta.env.VITE_API_KEY
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY; // ou import.meta.env.VITE_API_KEY
     console.log("API_KEY:", API_KEY); // Affiche la clé API dans la console
 
     // Ordre des tiers et rangs
