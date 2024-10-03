@@ -4,14 +4,17 @@ import PLAYERS from '../models/mock-player';
 import player from '../models/player';
 import GetTeamRank from './GetTeamRank';
 import SoloQChallenge_logo from '../assets/SoloQChallenge_logo.png';
+import Timer from './Timer';
+import SoloQChallengePopup from './SoloQChallengePopup';
 
-const API_KEY = 'RGAPI-54afeed9-bd53-4005-8d9b-e9eae5e845c3'; // Remplace avec ta clé API
+const API_KEY = 'RGAPI-301bfedc-629f-4fb1-ad61-704595704a5d'; // Remplace avec ta clé API
 
 const GetDataAccount = () => {
     const [summonerData, setSummonerData] = useState<any[]>([]); // Pour stocker les données récupérées
     const [error, setError] = useState<string | null>(null); // Message d'erreur ou null
-    const [players, setPlayers] = useState<player[]>(PLAYERS); // Initialisation directe avec les joueurs
+    const [players] = useState<player[]>(PLAYERS); // Initialisation directe avec les joueurs
     const [loading, setLoading] = useState<boolean>(false); // État de chargement
+    const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
 
     // Ordre des tiers et rangs
     const tierOrder = {
@@ -83,7 +86,7 @@ const GetDataAccount = () => {
 
             // Boucle sur chaque joueur
             for (const player of players) {
-                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag } = player;
+                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag, twitch } = player;
 
                 try {
                     // Récupérer les données classées par joueur
@@ -106,6 +109,7 @@ const GetDataAccount = () => {
                             leaguePoints: rankedInfo.leaguePoints,
                             wins: rankedInfo.wins,
                             losses: rankedInfo.losses,
+                            twitch: twitch,
                         });
                     } else {
                         setError(`Aucune donnée de classement trouvée pour ${gameName}#${tagLine}.`);
@@ -126,6 +130,11 @@ const GetDataAccount = () => {
         fetchSummonerData(); // Appeler la fonction de récupération des données automatiquement lors du montage
     }, [players]); // L'effet dépend des joueurs
 
+
+    const togglePopup = () => {
+        setShowPopup(!showPopup);
+    };
+
     return (
         <div className='flex flex-col'>
             {/* Premier conteneur pour l'image et le classement */}
@@ -133,21 +142,29 @@ const GetDataAccount = () => {
                 <div className='flex flex-col lg:flex-row h-auto lg:h-96 pb-12 w-full justify-between px-4 lg:px-16 mt-10'>
                     {/* Image responsive */}
                     <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallenge_logo} />
+                    <Timer />
                     {/* Classement des équipes */}
                     <div className="mt-6 lg:mt-0 w-full lg:w-3/12">
                         <GetTeamRank playerData={summonerData} />
                     </div>
                 </div>
             </div>
-    
+            {showPopup && <SoloQChallengePopup togglePopup={togglePopup} />}
+            {/* Pop-up */}
             {/* Deuxième conteneur pour le tableau des joueurs */}
             <div className="flex items-center justify-center mx-auto mt-12 w-full px-4">
-                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 bg-slate-900">
+                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 lg:bg-slate-900">
                     {/* Titre du classement */}
-                    <h1 className="text-3xl font-bold text-white text-center mb-4">
-                        Classement SoloQ Challenge
-                    </h1>
-                    
+                    <div className="flex flex-col lg:flex-row justify-center items-center mb-4">
+                        <h1 className="mx-auto text-3xl font-bold text-white text-center w-full lg:w-auto">
+                            Classement SoloQ Challenge
+                        </h1>
+                        <button 
+                        onClick={togglePopup}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 lg:mt-0 lg:ml-4">
+                            Règles
+                        </button>
+                    </div>
                     {/* Afficher un message de chargement ou d'erreur */}
                     {loading && <p className="text-center text-white">Chargement des données...</p>}
                     {error && <p className="text-center text-red-500">{error}</p>}
@@ -167,6 +184,7 @@ const GetDataAccount = () => {
                                         <th className="py-3 px-6 text-left">Victoire</th>
                                         <th className="py-3 px-6 text-left">Défaite</th>
                                         <th className="py-3 px-6 text-left">Winrate</th>
+                                        <th className="py-3 px-6 text-left">Twitch</th>
                                     </tr>
                                 </thead>
                                 <tbody className="text-white text-sm font-light">
@@ -181,6 +199,15 @@ const GetDataAccount = () => {
                                             <td className="py-3 px-6">{data.wins}</td>
                                             <td className="py-3 px-6">{data.losses}</td>
                                             <td className="py-3 px-6">{((data.wins / (data.wins + data.losses)) * 100).toFixed(2)}%</td>
+                                            <td className="py-3 px-6">
+                                                {data.twitch ? (
+                                                    <a href={data.twitch} target="_blank" rel="noreferrer">
+                                                        Twitch
+                                                    </a>
+                                                ) : (
+                                                    'N/A'
+                                                )}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>

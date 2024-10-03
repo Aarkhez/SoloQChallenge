@@ -5,6 +5,7 @@ export default class New {
     pseudo: string;
     tag: string;
     team: string;
+    twitch: string; 
 
 
   
@@ -15,6 +16,7 @@ export default class New {
         pseudo: string = "",
         tag: string = "",
         team: string = "",
+        twitch: string = "",
 
     ) {
         this.idLol = idLol;
@@ -23,6 +25,7 @@ export default class New {
         this.pseudo = pseudo;
         this.tag = tag;
         this.team = team;
+        this.twitch = twitch;
     }
   }
   

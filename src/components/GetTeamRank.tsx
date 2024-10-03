@@ -65,7 +65,7 @@ const GetTeamRank: React.FC<{ playerData: PlayerData[] }> = ({ playerData }) => 
         .sort((a, b) => b.points - a.points);
 
     return (
-        <div className="h-auto bg-white p-4 rounded shadow-lg w-full bg-slate-900">
+        <div className="h-auto bg-white p-4 rounded shadow-lg w-full lg:bg-slate-900">
             <h2 className="text-lg font-bold text-center mb-4">Classement des Équipes</h2>
             {sortedTeams.length > 0 ? (
                 <div className="overflow-x-auto mt-6">
