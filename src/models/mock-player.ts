@@ -10,7 +10,7 @@ export const PLAYERS: player[] = [
         team: "KingKong",
     },
     {
-        id: 3,
+        id: 2,
         name: "Mariuto",
         pseudo: "Maroui",
         tag: "2206",
@@ -18,7 +18,7 @@ export const PLAYERS: player[] = [
         team : "Team 1",
     },
     {
-        id: 4,
+        id: 3,
         name: "Viat",
         pseudo: "RIENATEGRAbdh",
         tag: "2433",
@@ -26,7 +26,7 @@ export const PLAYERS: player[] = [
         team: "Team 1",
     },
     {
-        id: 5,
+        id: 4,
         name: "Raiden",
         pseudo: "Jeong Ji hoon",
         tag: "정지훈",
@@ -34,7 +34,7 @@ export const PLAYERS: player[] = [
         team: "Team 1",
     },
     {
-        id: 6,
+        id: 5,
         name: "Slash",
         pseudo: "Haklaynanno",
         tag: "6035",
@@ -42,7 +42,7 @@ export const PLAYERS: player[] = [
         team: "Team 1",
     },
     {
-        id: 7,
+        id: 6,
         name: "Rubix",
         pseudo: "NanikaHaruka",
         tag: "1234",
@@ -50,7 +50,7 @@ export const PLAYERS: player[] = [
         team: "KingKong",
     },
     {
-        id: 6,
+        id: 7,
         name: "Trabos",
         pseudo: "Trafalgar Law",
         tag: "4444",
@@ -58,7 +58,7 @@ export const PLAYERS: player[] = [
         team: "Team 4",
     },
     {
-        id: 7,
+        id: 8,
         name: "Axel",
         pseudo: "LaTekilaa",
         tag: "3265",
