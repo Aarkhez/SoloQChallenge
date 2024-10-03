@@ -40,8 +40,8 @@ export const PLAYERS: player[] = [
     {
         id: 5,
         name: "Slash",
-        pseudo: "Haklaynanno",
-        tag: "6035",
+        pseudo: "김건부",
+        tag: "KR3",
         idLol: "23DgXUZX37oIngx-FpQTyqg4EzkfVoIpEd1N0IVPFpLFaQsQ7qYM0c2QBg",
         team: "Team Paqueta",
         twitch: "",
