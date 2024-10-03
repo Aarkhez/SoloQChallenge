@@ -127,18 +127,32 @@ const GetDataAccount = () => {
     }, [players]); // L'effet dépend des joueurs
 
     return (
-    <div className='flex flex-col'>
-        <div className="">
-        <div className='flex h-96 pb-12 flex-row w-full justify-between px-16 mt-10'>
-            <img className="pb-4" alt="SoloQChallenge" src={SoloQChallenge_logo}  />
-            <GetTeamRank playerData={summonerData} />
-        </div>
-        </div>
-        <div className="flex items-center justify-center mx-auto mt-12">
-                <div className="bg-white p-6 rounded shadow-lg w-full bg-slate-900"> {/* Utiliser colorbg ici */}
-                    <h1 className="text-3xl font-bold text-white text-center mb-4">Classement SoloQ Challenge</h1>
-                    {loading && <p className="text-center text-white">Chargement des données...</p>} {/* Afficher un message de chargement */}
+        <div className='flex flex-col'>
+            {/* Premier conteneur pour l'image et le classement */}
+            <div className="w-full">
+                <div className='flex flex-col lg:flex-row h-auto lg:h-96 pb-12 w-full justify-between px-4 lg:px-16 mt-10'>
+                    {/* Image responsive */}
+                    <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallenge_logo} />
+                    {/* Classement des équipes */}
+                    <div className="mt-6 lg:mt-0 w-full lg:w-3/12">
+                        <GetTeamRank playerData={summonerData} />
+                    </div>
+                </div>
+            </div>
+    
+            {/* Deuxième conteneur pour le tableau des joueurs */}
+            <div className="flex items-center justify-center mx-auto mt-12 w-full px-4">
+                <div className="bg-white p-6 mb-6 rounded shadow-lg w-full lg:w-4/5 bg-slate-900">
+                    {/* Titre du classement */}
+                    <h1 className="text-3xl font-bold text-white text-center mb-4">
+                        Classement SoloQ Challenge
+                    </h1>
+                    
+                    {/* Afficher un message de chargement ou d'erreur */}
+                    {loading && <p className="text-center text-white">Chargement des données...</p>}
                     {error && <p className="text-center text-red-500">{error}</p>}
+    
+                    {/* Table des données si disponibles */}
                     {summonerData.length > 0 && (
                         <div className="overflow-x-auto mt-6">
                             <table className="min-w-full border border-gray-700">
@@ -174,8 +188,8 @@ const GetDataAccount = () => {
                         </div>
                     )}
                 </div>
+            </div>
         </div>
-    </div>
     );
     
 };
