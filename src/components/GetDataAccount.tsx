@@ -27,14 +27,6 @@ const GetDataAccount = () => {
     const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
 
     const API_KEY = import.meta.env.VITE_API_KEY; // Pour récupérer la clé API
-    console.log("API_KEY:", API_KEY); // Log pour vérifier que ça fonctionne
-
-    try {
-        const logoPath = require('./GetDataAccount.tsx');
-        console.log("Logo path exists:", logoPath);
-    } catch (error) {
-        console.error("Logo path does not exist:", error);
-    }
 
     // Ordre des tiers et rangs
     const tierOrder = {
@@ -71,16 +63,14 @@ const GetDataAccount = () => {
     };
     
     const sortByRankAndDivision = (data: { tier: string; rank: string; leaguePoints: number }[]) => {
-        console.log("Data to sort:", data); // Log des données
+
     
         return data.sort((a, b) => {
             const tierA = a.tier.toUpperCase();
             const tierB = b.tier.toUpperCase();
-            console.log(`Comparing tiers: ${tierA} vs ${tierB}`);
     
             // Comparer les tiers, inversé pour que les tiers supérieurs soient considérés comme inférieurs
             const tierComparison = (tierOrder[tierB as keyof typeof tierOrder] ?? 0) - (tierOrder[tierA as keyof typeof tierOrder] ?? 0);
-            console.log(`Tier comparison result: ${tierComparison}`);
     
             if (tierComparison !== 0) {
                 return tierComparison; // Si les tiers sont différents, retourner le résultat
@@ -90,10 +80,8 @@ const GetDataAccount = () => {
             if (tierA !== 'MASTER' && tierA !== 'GRANDMASTER' && tierA !== 'CHALLENGER') {
                 const rankA = a.rank.toUpperCase();
                 const rankB = b.rank.toUpperCase();
-                console.log(`Comparing ranks: ${rankA} vs ${rankB}`);
     
                 const rankComparison = (rankOrder[rankA as keyof typeof rankOrder] ?? 0) - (rankOrder[rankB as keyof typeof rankOrder] ?? 0);
-                console.log(`Rank comparison result: ${rankComparison}`);
     
                 if (rankComparison !== 0) {
                     return rankComparison; // Si les rangs sont différents, retourner le résultat
@@ -101,7 +89,6 @@ const GetDataAccount = () => {
             }
     
             // Comparer les points de ligue
-            console.log(`Comparing league points: ${b.leaguePoints} vs ${a.leaguePoints}`);
             return b.leaguePoints - a.leaguePoints; // Ordre décroissant pour les points de ligue
         });
     };
@@ -149,7 +136,6 @@ const GetDataAccount = () => {
                     }
 
                 } catch (err) {
-                    console.error(err); // Log de l'erreur
                     setError(`Impossible de récupérer les informations pour ${gameName}#${tagLine}.`);
                 }
             }
