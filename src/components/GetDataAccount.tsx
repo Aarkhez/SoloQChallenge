@@ -7,7 +7,7 @@ import GetTeamRank from './GetTeamRank';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
 
-const API_KEY = process.env.API_KEY; // Remplace avec ta clé API
+const API_KEY = import.meta.env.VITE_API_KEY; // Remplace avec ta clé API
 
 const GetDataAccount = () => {
     const [summonerData, setSummonerData] = useState<any[]>([]); // Pour stocker les données récupérées
