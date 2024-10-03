@@ -3,7 +3,7 @@ import axios from 'axios';
 import PLAYERS from '../models/mock-player';
 import player from '../models/player';
 import GetTeamRank from './GetTeamRank';
-import SoloQChallengelogo from './../assets/SoloQChallengelogo.webp';
+import SoloQChallengelogo from '../../src/assets/soloqchallengelogo.webp';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
 
