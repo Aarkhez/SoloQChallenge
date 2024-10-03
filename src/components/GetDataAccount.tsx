@@ -7,7 +7,7 @@ import SoloQChallenge_logo from '../assets/SoloQChallenge_logo.png';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
 
-const API_KEY = 'RGAPI-301bfedc-629f-4fb1-ad61-704595704a5d'; // Remplace avec ta clé API
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY; // Remplace avec ta clé API
 
 const GetDataAccount = () => {
     const [summonerData, setSummonerData] = useState<any[]>([]); // Pour stocker les données récupérées
