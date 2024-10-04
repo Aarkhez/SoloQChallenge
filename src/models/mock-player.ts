@@ -46,7 +46,7 @@ export const PLAYERS: player[] = [
         name: "Slash",
         pseudo: "김건부",
         tag: "KR3",
-        idLol: "23DgXUZX37oIngx-FpQTyqg4EzkfVoIpEd1N0IVPFpLFaQsQ7qYM0c2QBg",
+        idLol: "X2QLRDQTV9DhPrX-JFUa68bnKzPtZjojkQPA1aadkIVmTSf0WKV9kSbnBw",
         team: "Team Paqueta",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/김건부-KR3",
