@@ -5,7 +5,8 @@ export default class New {
     pseudo: string;
     tag: string;
     team: string;
-    twitch: string; 
+    twitch: string;
+    opgg: string;
 
 
   
@@ -17,6 +18,7 @@ export default class New {
         tag: string = "",
         team: string = "",
         twitch: string = "",
+        opgg: string = ""
 
     ) {
         this.idLol = idLol;
@@ -26,6 +28,7 @@ export default class New {
         this.tag = tag;
         this.team = team;
         this.twitch = twitch;
+        this.opgg = opgg;
     }
   }
   

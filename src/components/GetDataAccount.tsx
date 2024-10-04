@@ -7,6 +7,7 @@ import SoloQChallengelogo from './img/soloqchallengelogo.webp';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
 import twitchlogo from './img/twitch.png';
+import opgglogo from './img/opgg.png';
 import imgIron from './img/rank/Rank=Iron.png';
 import imgBronze from './img/rank/Rank=Bronze.png';
 import imgSilver from './img/rank/Rank=Silver.png';
@@ -106,7 +107,7 @@ const GetDataAccount = () => {
 
             // Boucle sur chaque joueur
             for (const player of players) {
-                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag, twitch } = player;
+                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag, twitch, opgg} = player;
 
                 try {
                     // Récupérer les données classées par joueur
@@ -129,6 +130,7 @@ const GetDataAccount = () => {
                             leaguePoints: rankedInfo.leaguePoints,
                             wins: rankedInfo.wins,
                             losses: rankedInfo.losses,
+                            opgg: opgg,
                             twitch: twitch,
                         });
                     } else {
@@ -203,11 +205,12 @@ const GetDataAccount = () => {
                                         <th className="py-3 px-6 text-left">Victoire</th>
                                         <th className="py-3 px-6 text-left">Défaite</th>
                                         <th className="py-3 px-6 text-left">Winrate</th>
+                                        <th className="py-3 px-6 text-left">OP.GG</th>
                                         <th className="py-3 px-6 text-left">Twitch</th>
                                     </tr>
                                 </thead>
                                 <tbody className="text-white text-sm font-light">
-                                    {summonerData.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; team: string; wins: number; losses: number; twitch: string | null }, index) => (
+                                    {summonerData.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; team: string; wins: number; losses: number; twitch: string; opgg: string | null }, index) => (
                                         <tr key={index} className="border-b font-normal text-lg border-gray-700">
                                             <td className="py-3 px-6">{index + 1}</td> {/* Afficher le classement */}
                                             <td className="py-3 px-6">{data.name}</td>
@@ -226,6 +229,19 @@ const GetDataAccount = () => {
                                             <td className="py-3 px-6">{data.wins}</td>
                                             <td className="py-3 px-6">{data.losses}</td>
                                             <td className="py-3 px-6">{((data.wins / (data.wins + data.losses)) * 100).toFixed(2)}%</td>
+                                            <td className="py-3 px-6">
+                                                {data.opgg ? (
+                                                    <a href={data.opgg} target="_blank" rel="noreferrer">
+                                                        <img
+                                                    src={opgglogo} // Utilise une image par défaut si le tier n'est pas trouvé
+                                                    alt={`op.gg logo`}
+                                                    className="h-6 w-6 mr-2" // Taille de l'image
+                                                />
+                                                    </a>
+                                                ) : (
+                                                    'N/A'
+                                                )}
+                                            </td>
                                             <td className="py-3 px-6">
                                                 {data.twitch ? (
                                                     <a href={data.twitch} target="_blank" rel="noreferrer">

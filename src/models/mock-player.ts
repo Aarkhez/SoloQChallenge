@@ -9,6 +9,7 @@ export const PLAYERS: player[] = [
         idLol: "5GN8xTHsa6KUOiOfp7_AQiy91lnDkoWC_2ifVrZMrNi2tJyqOKKAExoU8A",
         team: "KingKong",
         twitch: "https://www.twitch.tv/arkheztv",
+        opgg: "https://www.op.gg/summoners/euw/TrasbosEnString-SLIP",
     },
     {
         id: 2,
@@ -18,6 +19,7 @@ export const PLAYERS: player[] = [
         idLol: "SXgh7CU0nq_xAOBLQmzg-vzGaRMVB5qgNJJTK-jNZ4CnjFGWHUpxiB2JSQ",
         team : "Nah I'd win",
         twitch: "",
+        opgg: "https://www.op.gg/summoners/euw/Maroui-2206",
     },
     {
         id: 3,
@@ -27,6 +29,7 @@ export const PLAYERS: player[] = [
         idLol: "BPctBmtILojyZhrug7d32wTHrMKY7t1kVNzxIU7B6GdBB6-46JKsjzz9XA",
         team: "Team Paqueta",
         twitch: "https://www.twitch.tv/viattv",
+        opgg: "https://www.op.gg/summoners/euw/RIENATEGRAbdh-2433",
     },
     {
         id: 4,
@@ -36,6 +39,7 @@ export const PLAYERS: player[] = [
         idLol: "2ZbU229Baj9WaWPSIhzXksTzZkMXsMYHNcV4x_2YkmlCiCLbM3FzK668fg",
         team: "Nah I'd win",
         twitch: "https://www.twitch.tv/weezer___",
+        opgg: "https://www.op.gg/summoners/euw/Jeong Ji hoon-정지훈",
     },
     {
         id: 5,
@@ -45,6 +49,7 @@ export const PLAYERS: player[] = [
         idLol: "23DgXUZX37oIngx-FpQTyqg4EzkfVoIpEd1N0IVPFpLFaQsQ7qYM0c2QBg",
         team: "Team Paqueta",
         twitch: "",
+        opgg: "https://www.op.gg/summoners/euw/김건부-KR3",
     },
     {
         id: 6,
@@ -54,6 +59,7 @@ export const PLAYERS: player[] = [
         idLol: "2qEJaTDEiYTBEmS4iw83P6XMdPSkmDMh_-1QfkA-yZHvKE_EfL4rb44bdw",
         team: "KingKong",
         twitch: "",
+        opgg: "https://www.op.gg/summoners/euw/NanikaHaruka-1234",
     },
     {
         id: 7,
@@ -63,6 +69,7 @@ export const PLAYERS: player[] = [
         idLol: "23DgXUZX37oIngx-FpQTyqg4EzkfVoIpEd1N0IVPFpLFaQsQ7qYM0c2QBg",
         team: "Don D. Gaetan",
         twitch: "https://www.twitch.tv/flyknit_",
+        opgg: "https://www.op.gg/summoners/euw/MALTY 2BZ-NCNC",
     },
     {
         id: 8,
@@ -72,6 +79,7 @@ export const PLAYERS: player[] = [
         idLol: "ti6jwSbReBV7bJ8TwxbFUNftoqMv5LF_3gBa-vKSTKHp8p-z9YiUFGhRYQ",
         team: "Don D. Gaetan",
         twitch: "",
+        opgg: "https://www.op.gg/summoners/euw/La4emeWave-2004",
     },
 ];
 export default PLAYERS;
