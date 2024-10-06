@@ -74,8 +74,8 @@ export const PLAYERS: player[] = [
     {
         id: 8,
         name: "Axel",
-        pseudo: "La4emeWave",
-        tag: "2004",
+        pseudo: "LeMicDeMastosEnY",
+        tag: "9W16L",
         idLol: "ti6jwSbReBV7bJ8TwxbFUNftoqMv5LF_3gBa-vKSTKHp8p-z9YiUFGhRYQ",
         team: "Don D. Gaetan",
         twitch: "",
