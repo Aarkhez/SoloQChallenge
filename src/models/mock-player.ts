@@ -76,10 +76,10 @@ export const PLAYERS: player[] = [
         name: "Axel",
         pseudo: "LeMicDeMastosEnY",
         tag: "9W16L",
-        idLol: "ti6jwSbReBV7bJ8TwxbFUNftoqMv5LF_3gBa-vKSTKHp8p-z9YiUFGhRYQ",
+        idLol: "sql9LzlIZm1OTdHcmYI4v5xzhDzeSwjDheD8WYxjdusd0HWYlP8V6Qy6QQ",
         team: "Don D. Gaetan",
         twitch: "",
-        opgg: "https://www.op.gg/summoners/euw/La4emeWave-2004",
+        opgg: "https://www.op.gg/summoners/euw/LeMicDeMastosEnY-9W16L",
     },
 ];
 export default PLAYERS;
