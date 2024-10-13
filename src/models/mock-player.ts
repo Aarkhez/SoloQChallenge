@@ -81,5 +81,25 @@ export const PLAYERS: player[] = [
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/LeMicDeMastosEnY-9W16L",
     },
+    {
+        id: 9,
+        name: "Sami",
+        pseudo: "AL BASHIR",
+        tag: "3945",
+        idLol: "YuMDH8MKBfmVvDhDvxXgPJwZCmQSlEj0hXPa-Z_aN78jRwSTkIKVcDzVjQ",
+        team: "Team Muslim",
+        twitch: "",
+        opgg: "https://www.op.gg/summoners/euw/AL BASHIR-3945",
+    },
+    {
+        id: 10,
+        name: "Kinkin",
+        pseudo: "MinchPinchFlinch",
+        tag: "100W",
+        idLol: "QuKhWKcYazylFp6YZuU7vZcPPc7wQG8xUWRxy-E2KJYtvTpO8c0500EPqw",
+        team: "Team Muslim",
+        twitch: "",
+        opgg: "https://www.op.gg/summoners/euw/MinchPinchFlinch-100W",
+    },
 ];
 export default PLAYERS;
