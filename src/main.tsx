@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <DataPage /> },
-      { path: "/riot.txt", element: <RiotPage /> },
+      { path: "/riot", element: <RiotPage /> },
     ],
   },
 ]);
