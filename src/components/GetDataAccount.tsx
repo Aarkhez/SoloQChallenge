@@ -156,13 +156,13 @@ const GetDataAccount = () => {
     return (
         <div className='flex flex-col'>
             {/* Premier conteneur pour l'image et le classement */}
-            <div className="w-full">
+            <div className="w-full xl:mb-12">
                 <div className='flex flex-col lg:flex-row h-auto lg:h-96 pb-12 w-full justify-between px-4 lg:px-16 mt-10'>
                     {/* Image responsive */}
                     <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallengelogo} />
                     <Timer />
                     {/* Classement des équipes */}
-                    <div className="mt-6 lg:mt-0 lg:w-full w-3/12">
+                    <div className="mt-6 lg:mt-0 w-full ">
                         <GetTeamRank playerData={summonerData} />
                     </div>
                 </div>
@@ -170,7 +170,7 @@ const GetDataAccount = () => {
             {showPopup && <SoloQChallengePopup togglePopup={togglePopup} />}
             {/* Pop-up */}
             {/* Deuxième conteneur pour le tableau des joueurs */}
-            <div className="flex items-center justify-center mx-auto mt-12 w-full px-4">
+            <div className="flex items-center justify-center mx-auto mt-20 w-full px-4">
                 <div className="p-6 mb-6 rounded shadow-lg w-full lg:w-10/12 bg-slate-900">
                     {/* Titre du classement */}
                     <div className="flex flex-col lg:flex-row justify-center items-center mb-4">
