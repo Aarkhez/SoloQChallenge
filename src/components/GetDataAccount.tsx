@@ -162,7 +162,7 @@ const GetDataAccount = () => {
                     <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallengelogo} />
                     <Timer />
                     {/* Classement des équipes */}
-                    <div className="mt-6 lg:mt-0 w-full lg:w-3/12">
+                    <div className="mt-6 lg:mt-0 lg:w-full w-3/12">
                         <GetTeamRank playerData={summonerData} />
                     </div>
                 </div>
