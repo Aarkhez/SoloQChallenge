@@ -170,7 +170,7 @@ const GetDataAccount = () => {
             {showPopup && <SoloQChallengePopup togglePopup={togglePopup} />}
             {/* Pop-up */}
             {/* Deuxième conteneur pour le tableau des joueurs */}
-            <div className="flex items-center justify-center mx-auto mt-20 w-full px-4">
+            <div className="flex items-center justify-center mx-auto mt-28 w-full px-4">
                 <div className="p-6 mb-6 rounded shadow-lg w-full lg:w-10/12 bg-slate-900">
                     {/* Titre du classement */}
                     <div className="flex flex-col lg:flex-row justify-center items-center mb-4">
