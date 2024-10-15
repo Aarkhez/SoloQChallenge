@@ -19,7 +19,6 @@ import imgMaster from './img/rank/Rank=Master.png';
 import imgGrandmaster from './img/rank/Rank=Grandmaster.png';
 import imgChallenger from './img/rank/Rank=Challenger.png';
 
-
 const GetDataAccount = () => {
     const [summonerData, setSummonerData] = useState<any[]>([]); // Pour stocker les données récupérées
     const [error, setError] = useState<string | null>(null); // Message d'erreur ou null
@@ -65,7 +64,6 @@ const GetDataAccount = () => {
     
     const sortByRankAndDivision = (data: { tier: string; rank: string; leaguePoints: number }[]) => {
 
-    
         return data.sort((a, b) => {
             const tierA = a.tier.toUpperCase();
             const tierB = b.tier.toUpperCase();
@@ -151,7 +149,6 @@ const GetDataAccount = () => {
         fetchSummonerData(); // Appeler la fonction de récupération des données automatiquement lors du montage
     }, [players]); // L'effet dépend des joueurs
 
-
     const togglePopup = () => {
         setShowPopup(!showPopup);
     };
@@ -160,12 +157,12 @@ const GetDataAccount = () => {
         <div className='flex flex-col'>
             {/* Premier conteneur pour l'image et le classement */}
             <div className="w-full">
-                <div className='flex flex-col lg:flex-row h-auto lg:h-96 pb-12 w-full justify-between px-4 lg:px-16 mt-10'>
+                <div className='flex flex-col md:flex-row h-auto md:h-96 pb-12 w-full justify-between px-4 md:px-16 mt-10'>
                     {/* Image responsive */}
-                    <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallengelogo} />
+                    <img className="pb-4 mx-auto md:mx-0 w-1/2 md:w-auto" alt="SoloQChallenge" src={SoloQChallengelogo} />
                     <Timer />
                     {/* Classement des équipes */}
-                    <div className="mt-6 lg:mt-0 w-full lg:w-3/12">
+                    <div className="mt-6 md:mt-0 w-full md:w-3/12">
                         <GetTeamRank playerData={summonerData} />
                     </div>
                 </div>
