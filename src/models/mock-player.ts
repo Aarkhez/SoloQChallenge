@@ -87,7 +87,7 @@ export const PLAYERS: player[] = [
         pseudo: "La4emeWave",
         tag: "2004",
         idLol: "ti6jwSbReBV7bJ8TwxbFUNftoqMv5LF_3gBa-vKSTKHp8p-z9YiUFGhRYQ",
-        team: "",
+        team: "Don D. Gaetan",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/La4emeWave-2004",
     },
