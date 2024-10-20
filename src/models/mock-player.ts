@@ -71,7 +71,7 @@ export const PLAYERS: player[] = [
         twitch: "https://www.twitch.tv/flyknit_",
         opgg: "https://www.op.gg/summoners/euw/MALTY 2BZ-NCNC",
     },
-    {
+    /*{
         id: 8,
         name: "Axel",
         pseudo: "LeMicDeMastosEnY",
@@ -80,9 +80,9 @@ export const PLAYERS: player[] = [
         team: "Don D. Gaetan",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/LeMicDeMastosEnY-9W16L",
-    },
+    },*/
     {
-        id: 11,
+        id: 8,
         name: "Axel",
         pseudo: "La4emeWave",
         tag: "2004",
