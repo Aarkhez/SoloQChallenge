@@ -10,6 +10,8 @@ export default class New {
     tier: string;
     rank: string;
     lp: string;
+    wins: number;
+    losses: number;
 
 
   
@@ -25,6 +27,8 @@ export default class New {
         tier: string = "",
         rank: string = "",
         lp: string = "",
+        wins: number = 0,
+        losses: number = 0,
 
     ) {
         this.idLol = idLol;
@@ -38,6 +42,8 @@ export default class New {
         this.tier = tier;
         this.rank = rank;
         this.lp = lp;
+        this.wins = wins;
+        this.losses = losses;
     }
   }
   

@@ -105,7 +105,7 @@ const GetDataAccount = () => {
 
             // Boucle sur chaque joueur
             for (const player of players) {
-                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag, twitch, opgg, tier , rank ,lp} = player;
+                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag, twitch, opgg, tier , rank ,lp, wins, losses} = player;
 
                 try {
                     // Récupérer les données classées par joueur
@@ -131,8 +131,8 @@ const GetDataAccount = () => {
                             tier: tier ? tier : rankedInfo.tier,
                             rank: rank ? rank : rankedInfo.rank,
                             leaguePoints: lp ? lp : rankedInfo.leaguePoints,
-                            wins: rankedInfo.wins,
-                            losses: rankedInfo.losses,
+                            wins: wins ? wins :rankedInfo.wins,
+                            losses: losses ? losses : rankedInfo.losses,
                             opgg: opgg,
                             twitch: twitch,
                         });

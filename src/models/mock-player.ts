@@ -13,6 +13,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 2,
@@ -26,6 +28,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 3,
@@ -39,6 +43,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 4,
@@ -52,6 +58,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 5,
@@ -65,6 +73,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 6,
@@ -78,6 +88,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 7,
@@ -91,6 +103,8 @@ export const PLAYERS: player[] = [
         tier: "DIAMOND",
         rank: "III",
         lp: "32",
+        wins: 69,
+        losses: 31,
     },
     /*{
         id: 8,
@@ -114,6 +128,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 9,
@@ -127,6 +143,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
     {
         id: 10,
@@ -140,6 +158,8 @@ export const PLAYERS: player[] = [
         tier: "",
         rank: "",
         lp: "",
+        wins: 0,
+        losses: 0,
     },
 ];
 export default PLAYERS;
