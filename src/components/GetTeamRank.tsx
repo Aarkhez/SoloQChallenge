@@ -47,7 +47,7 @@ const calculateTeamPoints = (playerData: PlayerData[]) => {
        // console.log(tierPoints, rankPoints, leaguePoints);
 
         // Points totaux pour le joueur
-        const totalPoints = tierPoints + rankPoints + leaguePoints;
+        const totalPoints = Number(tierPoints) + Number(rankPoints) + Number(leaguePoints);
 
         // Ajouter les points au total de l'équipe
         if (!teamPoints[team]) {
