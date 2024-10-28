@@ -116,10 +116,11 @@ const GetDataAccount = () => {
                     console.log(player.tier);
                     console.log(player.rank);
                     console.log(player.lp);
-
+                    
                     // Extraire les informations nécessaires
                     if (response.data.length > 0) {
                         const rankedInfo = response.data[0]; // On prend la première entrée (le joueur peut avoir plusieurs classements)
+                        console.log(rankedInfo);
 
                         // Construire un objet avec les informations souhaitées
                         data.push({
@@ -127,7 +128,6 @@ const GetDataAccount = () => {
                             pseudo: gameName,
                             tag : tag,
                             team: team,
-                            console.log(tier + '&&&&&&' + rankedInfo.tier),
                             tier: tier ?? rankedInfo.tier,
                             rank: rank ?? rankedInfo.rank,
                             leaguePoints: lp ?? rankedInfo.leaguePoints,
