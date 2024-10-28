@@ -103,8 +103,8 @@ export const PLAYERS: player[] = [
         tier: "DIAMOND",
         rank: "III",
         lp: "32",
-        wins: 69,
-        losses: 31,
+        wins: 61,
+        losses: 39,
     },
     /*{
         id: 8,
