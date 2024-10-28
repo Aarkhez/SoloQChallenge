@@ -112,10 +112,6 @@ const GetDataAccount = () => {
                     const response = await axios.get(
                         `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`
                     );
-
-                    console.log(player.tier);
-                    console.log(player.rank);
-                    console.log(player.lp);
                     
                     // Extraire les informations nécessaires
                     if (response.data.length > 0) {
@@ -158,8 +154,6 @@ const GetDataAccount = () => {
     const togglePopup = () => {
         setShowPopup(!showPopup);
     };
-
-    console.log(summonerData);
 
     return (
         <div className='flex flex-col'>
