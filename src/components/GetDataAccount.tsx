@@ -127,6 +127,7 @@ const GetDataAccount = () => {
                             pseudo: gameName,
                             tag : tag,
                             team: team,
+                            console.log(tier + '&&&&&&' + rankedInfo.tier),
                             tier: tier ?? rankedInfo.tier,
                             rank: rank ?? rankedInfo.rank,
                             leaguePoints: lp ?? rankedInfo.leaguePoints,
