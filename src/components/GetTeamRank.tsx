@@ -54,6 +54,10 @@ const calculateTeamPoints = (playerData: PlayerData[]) => {
             teamPoints[team] = 0; // Initialiser si l'équipe n'existe pas
         }
         teamPoints[team] += totalPoints;
+
+        console.log(teamPoints[team]);
+        console.log(teamPoints);
+        console.log(totalPoints);
     });
 
     return teamPoints;

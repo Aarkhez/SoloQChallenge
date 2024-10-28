@@ -132,7 +132,6 @@ const GetDataAccount = () => {
                             opgg: opgg,
                             twitch: twitch,
                         });
-                        console.log(data);
                     } else {
                         setError(`Aucune donnée de classement trouvée pour ${gameName}#${tagLine}.`);
                     }
