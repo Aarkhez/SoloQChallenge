@@ -10,6 +10,9 @@ export const PLAYERS: player[] = [
         team: "KingKong",
         twitch: "https://www.twitch.tv/arkheztv",
         opgg: "https://www.op.gg/summoners/euw/TrasbosEnString-SLIP",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 2,
@@ -20,6 +23,9 @@ export const PLAYERS: player[] = [
         team : "Nah I'd win",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/Maroui-2206",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 3,
@@ -30,6 +36,9 @@ export const PLAYERS: player[] = [
         team: "Team Paqueta",
         twitch: "https://www.twitch.tv/viattv",
         opgg: "https://www.op.gg/summoners/euw/RIENATEGRAbdh-2433",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 4,
@@ -40,6 +49,9 @@ export const PLAYERS: player[] = [
         team: "Nah I'd win",
         twitch: "https://www.twitch.tv/weezer___",
         opgg: "https://www.op.gg/summoners/euw/Jeong Ji hoon-정지훈",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 5,
@@ -50,6 +62,9 @@ export const PLAYERS: player[] = [
         team: "Team Paqueta",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/김건부-KR3",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 6,
@@ -60,6 +75,9 @@ export const PLAYERS: player[] = [
         team: "KingKong",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/NanikaHaruka-1234",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 7,
@@ -70,6 +88,9 @@ export const PLAYERS: player[] = [
         team: "Don D. Gaetan",
         twitch: "https://www.twitch.tv/flyknit_",
         opgg: "https://www.op.gg/summoners/euw/MALTY 2BZ-NCNC",
+        tier: "DIAMOND",
+        rank: "III",
+        lp: "32",
     },
     /*{
         id: 8,
@@ -90,6 +111,9 @@ export const PLAYERS: player[] = [
         team: "Don D. Gaetan",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/La4emeWave-2004",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 9,
@@ -100,6 +124,9 @@ export const PLAYERS: player[] = [
         team: "Team Muslim",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/AL BASHIR-3945",
+        tier: "",
+        rank: "",
+        lp: "",
     },
     {
         id: 10,
@@ -110,6 +137,9 @@ export const PLAYERS: player[] = [
         team: "Team Muslim",
         twitch: "",
         opgg: "https://www.op.gg/summoners/euw/MinchPinchFlinch-100W",
+        tier: "",
+        rank: "",
+        lp: "",
     },
 ];
 export default PLAYERS;

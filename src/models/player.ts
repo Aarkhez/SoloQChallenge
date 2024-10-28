@@ -7,6 +7,9 @@ export default class New {
     team: string;
     twitch: string;
     opgg: string;
+    tier: string;
+    rank: string;
+    lp: string;
 
 
   
@@ -18,7 +21,10 @@ export default class New {
         tag: string = "",
         team: string = "",
         twitch: string = "",
-        opgg: string = ""
+        opgg: string = "",
+        tier: string = "",
+        rank: string = "",
+        lp: string = "",
 
     ) {
         this.idLol = idLol;
@@ -29,6 +35,9 @@ export default class New {
         this.team = team;
         this.twitch = twitch;
         this.opgg = opgg;
+        this.tier = tier;
+        this.rank = rank;
+        this.lp = lp;
     }
   }
   
