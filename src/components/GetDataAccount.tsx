@@ -112,6 +112,7 @@ const GetDataAccount = () => {
                     const response = await axios.get(
                         `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`
                     );
+                    console.log(response.data);
 
                     // Extraire les informations nécessaires
                     if (response.data.length > 0) {
