@@ -120,7 +120,7 @@ const GetDataAccount = () => {
                     // Extraire les informations nécessaires
                     if (response.data.length > 0) {
                         const rankedInfo = response.data[0]; // On prend la première entrée (le joueur peut avoir plusieurs classements)
-                        console.log(rankedInfo);
+
 
                         // Construire un objet avec les informations souhaitées
                         data.push({
@@ -136,6 +136,7 @@ const GetDataAccount = () => {
                             opgg: opgg,
                             twitch: twitch,
                         });
+                        console.log(data);
                     } else {
                         setError(`Aucune donnée de classement trouvée pour ${gameName}#${tagLine}.`);
                     }
