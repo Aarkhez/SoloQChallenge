@@ -11,6 +11,7 @@ export default class New {
     lp: string;
     wins: number;
     losses: number;
+    lpAdjustment: number;
 
 
   
@@ -27,6 +28,7 @@ export default class New {
         lp: string = "",
         wins: number = 0,
         losses: number = 0,
+        lpAdjustment: number = 1,
 
     ) {
         this.idLol = idLol;
@@ -41,6 +43,7 @@ export default class New {
         this.lp = lp;
         this.wins = wins;
         this.losses = losses;
+        this.lpAdjustment = lpAdjustment;
     }
   }
   

@@ -17,13 +17,16 @@ import imgDiamond from './img/rank/Rank=Diamond.png';
 import imgMaster from './img/rank/Rank=Master.png';
 import imgGrandmaster from './img/rank/Rank=Grandmaster.png';
 import imgChallenger from './img/rank/Rank=Challenger.png';
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 const GetDataAccount = () => {
-    const [summonerData, setSummonerData] = useState<any[]>([]); // Pour stocker les données récupérées
     const [error, setError] = useState<string | null>(null); // Message d'erreur ou null
     const [players] = useState<player[]>(PLAYERS); // Initialisation directe avec les joueurs
     const [loading, setLoading] = useState<boolean>(false); // État de chargement
     const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
+    const [sortedDataByPoint, setSortedDataByPoint] = useState<any[]>([]);
+    const [sortOrderRank, setSortOrderRank] = useState('asc'); // 'asc' pour croissant, 'desc' pour décroissant
+    const [sortOrderPoints, setSortOrderPoints] = useState('asc'); // 'asc' pour croissant, 'desc' pour décroissant
 
     const API_KEY = "RGAPI-ba232415-8577-401b-b933-1214883b5a15"; // Pour récupérer la clé API
 
@@ -52,6 +55,26 @@ const GetDataAccount = () => {
         'MASTER': imgMaster,
         'GRANDMASTER': imgGrandmaster,
         'CHALLENGER': imgChallenger,
+    };
+
+    const tierOrderPoint = {
+        'IRON': 0,
+        'BRONZE': 400,
+        'SILVER': 800,
+        'GOLD': 1200,
+        'PLATINUM': 1600,
+        'EMERALD': 2000,
+        'DIAMOND': 2400,
+        'MASTER': 2800,
+        'GRANDMASTER': 3200,
+        'CHALLENGER': 3600,
+    };
+    
+    const rankOrderPoint = {
+        'IV': 0,
+        'III': 100,
+        'II': 200,
+        'I': 300,
     };
     
     const rankOrder = {
@@ -91,6 +114,22 @@ const GetDataAccount = () => {
         });
     };
 
+    const calculateTeamPoints = (players: any[]) => {
+        return players.map(player => {
+            const { tier, rank, leaguePoints, lpAdjustment } = player;
+    
+            const tierPoints = tierOrderPoint[tier as keyof typeof tierOrderPoint] || 0;
+            const rankPoints = rankOrderPoint[rank as keyof typeof rankOrderPoint] || 0;
+    
+            const totalPoints = tierPoints + rankPoints + leaguePoints;
+            return {
+                ...player,
+                pointsAdjustment: Math.round(totalPoints * lpAdjustment), // Ajoute un champ "pointsAdjustment" au joueur sans décimales
+                points: totalPoints // Ajoute un champ "points" au joueur
+            };
+        });
+    };
+
     const fetchSummonerData = async () => {
         const data: any[] = []; // Pour stocker les données des joueurs
 
@@ -103,7 +142,7 @@ const GetDataAccount = () => {
 
         // Boucle sur chaque joueur
         for (const player of players) {
-            const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, tag, twitch, opgg, tier , rank ,lp, wins, losses} = player;
+            const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, tag, twitch, opgg, tier , rank ,lp, wins, losses, lpAdjustment} = player;
 
             try {
                 // Récupérer les données classées par joueur
@@ -113,7 +152,11 @@ const GetDataAccount = () => {
                 
                 // Extraire les informations nécessaires
                 if (response.data.length > 0) {
-                    const rankedInfo = response.data[1];
+                    const rankedInfo = response.data.find((entry: any) => entry.queueType === "RANKED_SOLO_5x5");
+                    if (!rankedInfo) {
+                        setError(`Aucune donnée de classement SoloQ trouvée pour ${gameName}#${tagLine}.`);
+                        continue;
+                    }
 
 
                     // Construire un objet avec les informations souhaitées
@@ -128,6 +171,7 @@ const GetDataAccount = () => {
                         losses: losses ? losses : rankedInfo.losses,
                         opgg: opgg,
                         twitch: twitch,
+                        lpAdjustment: lpAdjustment,
                     });
                 } else {
                     setError(`Aucune donnée de classement trouvée pour ${gameName}#${tagLine}.`);
@@ -138,16 +182,44 @@ const GetDataAccount = () => {
             }
         }
         // Trier les données par tier, rank et LP avant de les mettre à jour
-        const sortedData = sortByRankAndDivision(data);
-        setSummonerData(sortedData);
+        const playerwithPoints = calculateTeamPoints(data); 
+
+        const sortedData = sortByRankAndDivision(playerwithPoints);
+        setSortedDataByPoint(sortedData);
         setLoading(false); // Fin du chargement
         setError(null); // Réinitialiser l'erreur
     };
 
     useEffect(() => {
-        console.log('fetchSummonerData called');
         fetchSummonerData(); // Appeler la fonction de récupération des données automatiquement lors du montage
     }, []); // L'effet dépend des joueurs
+
+
+  // Fonction de tri des données
+const sortTable = (column: string) => {
+    let sorted = [...sortedDataByPoint];
+
+    if (column === 'points') {
+        const orderPoints = sortOrderPoints === 'desc' ? 'asc' : 'desc'; // Toggle order for points
+        sorted = sorted.sort((a, b) =>
+            orderPoints === 'desc'
+                ? (b.pointsAdjustment ?? 0) - (a.pointsAdjustment ?? 0)
+                : (a.pointsAdjustment ?? 0) - (b.pointsAdjustment ?? 0)
+        );
+        setSortOrderPoints(orderPoints); // Update sort order for points
+    }
+
+    if (column === 'rank') {
+        const orderRank = sortOrderRank === 'desc' ? 'asc' : 'desc'; // Toggle order for rank
+        sorted = sorted.sort((a, b) =>
+            orderRank === 'desc'
+                ? b.points - a.points
+                : a.points - b.points
+        );
+        setSortOrderRank(orderRank); // Update sort order for rank
+    }
+    setSortedDataByPoint(sorted);
+};
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -214,7 +286,7 @@ const GetDataAccount = () => {
                     {error && <p className="text-center text-red-500">{error}</p>}
     
                     {/* Table des données si disponibles */}
-                    {summonerData.length > 0 && (
+                    {sortedDataByPoint.length > 0 && (
                         <div className="overflow-x-auto mt-6">
                             <table className="min-w-full border border-gray-700">
                                 <thead>
@@ -222,22 +294,24 @@ const GetDataAccount = () => {
                                         <th className="py-3 px-6 text-left">Classement</th>
                                         <th className="py-3 px-6 text-left">Nom</th>
                                         <th className="py-3 px-6 text-left">Pseudo</th>
-                                        <th className="py-3 px-6 text-left">Rank</th>
+                                        <th className="py-3 px-6 text-left cursor-pointer" onClick={() => sortTable('points')}>Points <span className='inline-block'>{sortOrderPoints === 'asc' ? <ChevronUp className="ml-2 w-4 h-4" /> : <ChevronDown className="ml-2 w-4 h-4" />}</span></th>
+                                        <th className="py-3 px-6 text-left cursor-pointer" onClick={() => sortTable('rank')}>Rank <span className='inline-block'>{sortOrderRank === 'asc' ? <ChevronUp className="ml-2 w-4 h-4" /> : <ChevronDown className="ml-2 w-4 h-4" />}</span></th>
                                         <th className="py-3 px-6 text-left">Matchs</th>
                                         <th className="py-3 px-6 text-left">Victoire</th>
-                                        <th className="py-3 px-6 text-left">Défaite</th>
+                                        <th className="py-3 px-6 text-left cursor-pointer">Défaite</th>
                                         <th className="py-3 px-6 text-left">Winrate</th>
                                         <th className="py-3 px-6 text-left">OP.GG</th>
                                         <th className="py-3 px-6 text-left">Twitch</th>
                                     </tr>
                                 </thead>
                                 <tbody className="text-white text-sm font-light">
-                                    {summonerData.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; wins: number; losses: number; twitch: string; opgg: string | null }, index) => (
+                                    {sortedDataByPoint.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; wins: number; losses: number; twitch: string; opgg: string; points: number; pointsAdjustment: number | null }, index) => (
                                         <tr key={index} className="border-b font-normal text-lg border-gray-700">
                                             <td className="py-3 px-6">{index + 1}</td> {/* Afficher le classement */}
                                             <td className="py-3 px-6">{data.name}</td>
                                             <td className="py-3 px-6">{data.pseudo}#{data.tag}</td>
-                                            <td className="py-3 px-6 flex items-center">
+                                            <td className="py-3 px-6">{data.pointsAdjustment}</td>
+                                            <td className="py-3 px-6 flex items-center" data-value={data.points}>
                                                 {/* Afficher l'image du tier */}
                                                 <img
                                                     src={tierImages[data.tier] || ''} // Utilise une image par défaut si le tier n'est pas trouvé

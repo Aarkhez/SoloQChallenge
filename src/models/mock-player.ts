@@ -14,6 +14,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.87,
     },
     {
         id: 2,
@@ -28,6 +29,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.94,
     },
     {
         id: 3,
@@ -42,22 +44,9 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.83,
     },
-    {
-        id: 11,
-        name: "Tordy",
-        pseudo: "Nanika Haruka",
-        tag: "1234",
-        idLol: "Or0F4n5s3mQ01uQ_9PA5Dwy15Z27phdeLyv4YYe9lEtKpWsfSEquSn1s1Q",
-        twitch: "",
-        opgg: "https://www.op.gg/summoners/euw/Nanika Haruka-1234",
-        tier: "",
-        rank: "",
-        lp: "",
-        wins: 0,
-        losses: 0
-    },
-    {
+   {
         id: 4,
         name: "Raiden",
         pseudo: "Estilyemos",
@@ -70,6 +59,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.86,
     },
     {
         id: 5,
@@ -84,6 +74,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.94,
     },
     {
         id: 6,
@@ -98,6 +89,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.98,
     },
     {
         id: 7,
@@ -112,6 +104,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.84,
     },
     {
         id: 8,
@@ -126,10 +119,11 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
+        lpAdjustment: 0.91,
     },
     {
         id: 9,
-        name: "Dusk",
+        name: "Watson",
         pseudo: "Wrethember2",
         tag: "8742",
         idLol: "YuMDH8MKBfmVvDhDvxXgPJwZCmQSlEj0hXPa-Z_aN78jRwSTkIKVcDzVjQ",
@@ -140,20 +134,7 @@ export const PLAYERS: player[] = [
         lp: "",
         wins: 0,
         losses: 0,
-    },
-    {
-        id: 10,
-        name: "Arkhez",
-        pseudo: "Arkhez",
-        tag: "1234",
-        idLol: "mmtsyy-vbKbfBvSeREuJMRh1rWFB7j2MzM6fSPNx44_1QnI",
-        twitch: "https://www.twitch.tv/arkheztv",
-        opgg: "https://www.op.gg/summoners/euw/Arkhez-1234",
-        tier: "",
-        rank: "",
-        lp: "",
-        wins: 0,
-        losses: 0,
+        lpAdjustment: 0.92,
     },
 ];
 export default PLAYERS;
