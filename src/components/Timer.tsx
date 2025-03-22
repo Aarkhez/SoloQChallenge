@@ -9,8 +9,7 @@ const Timer = () => {
 
     // Date cible (1 mois à partir de maintenant)
     const targetDate = new Date('2025-05-06T00:00:00');
-    targetDate.setMonth(targetDate.getMonth() + 1);
-    targetDate.setHours(targetDate.getHours() - 1);
+    targetDate.setHours(targetDate.getHours() + 1);
 
     useEffect(() => {
         const updateTimer = () => {
