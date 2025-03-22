@@ -8,7 +8,7 @@ const Timer = () => {
     });
 
     // Date cible (1 mois à partir de maintenant)
-    const targetDate = new Date('2024-10-04T00:00:00');
+    const targetDate = new Date('2025-05-06T00:00:00');
     targetDate.setMonth(targetDate.getMonth() + 1);
     targetDate.setHours(targetDate.getHours() - 1);
 
@@ -37,7 +37,7 @@ const Timer = () => {
     }, [targetDate]);
 
     return (
-        <div className="p-6 mt-20 rounded w-full text-white text-center">
+        <div className=" text-white text-center">
             <h2 className="text-2xl font-bold">Temps Restant</h2>
             <div className="text-4xl mt-4">
                 {timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m

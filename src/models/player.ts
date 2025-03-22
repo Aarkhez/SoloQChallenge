@@ -4,7 +4,6 @@ export default class New {
     name: string;
     pseudo: string;
     tag: string;
-    team: string;
     twitch: string;
     opgg: string;
     tier: string;
@@ -21,7 +20,6 @@ export default class New {
         name: string = "",
         pseudo: string = "",
         tag: string = "",
-        team: string = "",
         twitch: string = "",
         opgg: string = "",
         tier: string = "",
@@ -36,7 +34,6 @@ export default class New {
         this.name = name;
         this.pseudo = pseudo;
         this.tag = tag;
-        this.team = team;
         this.twitch = twitch;
         this.opgg = opgg;
         this.tier = tier;

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PLAYERS from '../models/mock-player';
 import player from '../models/player';
-import GetTeamRank from './GetTeamRank';
 import SoloQChallengelogo from './img/soloqchallengelogo.webp';
 import Timer from './Timer';
 import SoloQChallengePopup from './SoloQChallengePopup';
@@ -26,7 +25,7 @@ const GetDataAccount = () => {
     const [loading, setLoading] = useState<boolean>(false); // État de chargement
     const [showPopup, setShowPopup] = useState<boolean>(false); // État pour afficher ou cacher le popup
 
-    const API_KEY = import.meta.env.VITE_API_KEY; // Pour récupérer la clé API
+    const API_KEY = "RGAPI-ba232415-8577-401b-b933-1214883b5a15"; // Pour récupérer la clé API
 
     // Ordre des tiers et rangs
     const tierOrder = {
@@ -92,63 +91,63 @@ const GetDataAccount = () => {
         });
     };
 
-    useEffect(() => {
-        const fetchSummonerData = async () => {
-            const data: any[] = []; // Pour stocker les données des joueurs
+    const fetchSummonerData = async () => {
+        const data: any[] = []; // Pour stocker les données des joueurs
 
-            if (players.length === 0) {
-                setError('Aucun joueur trouvé.');
-                return;
-            }
+        if (players.length === 0) {
+            setError('Aucun joueur trouvé.');
+            return;
+        }
 
-            setLoading(true); // Début du chargement
+        setLoading(true); // Début du chargement
 
-            // Boucle sur chaque joueur
-            for (const player of players) {
-                const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, team, tag, twitch, opgg, tier , rank ,lp, wins, losses} = player;
+        // Boucle sur chaque joueur
+        for (const player of players) {
+            const { pseudo: gameName, tag: tagLine, idLol: encryptedSummonerId, name, tag, twitch, opgg, tier , rank ,lp, wins, losses} = player;
 
-                try {
-                    // Récupérer les données classées par joueur
-                    const response = await axios.get(
-                        `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`
-                    );
-                    
-                    // Extraire les informations nécessaires
-                    if (response.data.length > 0) {
-                        const rankedInfo = response.data[0]; // On prend la première entrée (le joueur peut avoir plusieurs classements)
+            try {
+                // Récupérer les données classées par joueur
+                const response = await axios.get(
+                    `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${encryptedSummonerId}?api_key=${API_KEY}`
+                );
+                
+                // Extraire les informations nécessaires
+                if (response.data.length > 0) {
+                    const rankedInfo = response.data[1];
 
 
-                        // Construire un objet avec les informations souhaitées
-                        data.push({
-                            name: name,
-                            pseudo: gameName,
-                            tag : tag,
-                            team: team,
-                            tier: tier ? tier : rankedInfo.tier,
-                            rank: rank ? rank : rankedInfo.rank,
-                            leaguePoints: lp ? lp : rankedInfo.leaguePoints,
-                            wins: wins ? wins :rankedInfo.wins,
-                            losses: losses ? losses : rankedInfo.losses,
-                            opgg: opgg,
-                            twitch: twitch,
-                        });
-                    } else {
-                        setError(`Aucune donnée de classement trouvée pour ${gameName}#${tagLine}.`);
-                    }
-
-                } catch (err) {
-                    setError(`Impossible de récupérer les informations pour ${gameName}#${tagLine}.`);
+                    // Construire un objet avec les informations souhaitées
+                    data.push({
+                        name: name,
+                        pseudo: gameName,
+                        tag : tag,
+                        tier: tier ? tier : rankedInfo.tier,
+                        rank: rank ? rank : rankedInfo.rank,
+                        leaguePoints: lp ? lp : rankedInfo.leaguePoints,
+                        wins: wins ? wins :rankedInfo.wins,
+                        losses: losses ? losses : rankedInfo.losses,
+                        opgg: opgg,
+                        twitch: twitch,
+                    });
+                } else {
+                    setError(`Aucune donnée de classement trouvée pour ${gameName}#${tagLine}.`);
                 }
-            }
-            // Trier les données par tier, rank et LP avant de les mettre à jour
-            const sortedData = sortByRankAndDivision(data);
-            setSummonerData(sortedData);
-            setLoading(false); // Fin du chargement
-            setError(null); // Réinitialiser l'erreur
-        };
 
+            } catch (err) {
+                setError(`Impossible de récupérer les informations pour ${gameName}#${tagLine}.`);
+            }
+        }
+        // Trier les données par tier, rank et LP avant de les mettre à jour
+        const sortedData = sortByRankAndDivision(data);
+        setSummonerData(sortedData);
+        setLoading(false); // Fin du chargement
+        setError(null); // Réinitialiser l'erreur
+    };
+
+    useEffect(() => {
+        console.log('fetchSummonerData called');
         fetchSummonerData(); // Appeler la fonction de récupération des données automatiquement lors du montage
-    }, [players]); // L'effet dépend des joueurs
+    }, []); // L'effet dépend des joueurs
 
     const togglePopup = () => {
         setShowPopup(!showPopup);
@@ -156,18 +155,44 @@ const GetDataAccount = () => {
 
     return (
         <div className='flex flex-col'>
-            {/* Premier conteneur pour l'image et le classement */}
-            <div className="w-full xl:mb-12">
-                <div className='flex flex-col lg:flex-row h-auto lg:h-96 pb-12 w-full justify-between px-4 lg:px-16 mt-10'>
-                    {/* Image responsive */}
-                    <img className="pb-4 mx-auto lg:mx-0 w-1/2 lg:w-auto" alt="SoloQChallenge" src={SoloQChallengelogo} />
-                    <Timer />
-                    {/* Classement des équipes */}
-                    <div className="mt-6 lg:mt-0 w-full xl:w-1/2 ">
-                        <GetTeamRank playerData={summonerData} />
-                    </div>
-                </div>
+    <div className="flex flex-col lg:flex-row w-full items-center justify-between px-10 lg:px-24 mt-10">
+        <img 
+            className="w-1/2 lg:w-1/6 lg:left-0 ml-0 lg:ml-10 mt-10 lg:mt-0" 
+            alt="SoloQChallenge" 
+            src={SoloQChallengelogo} 
+        />
+        <div className="lg:w-1/3 w-3/5 lg:right-0 mr-0 lg:mr-10 my-10 lg:mt-0 p-6 mb-6 rounded shadow-lg bg-slate-900">
+        <h2 className="text-xl font-bold text-left mb-4">🏆 Récompense CashPrize</h2>
+            <div className="overflow-x-auto mt-6">
+                <table className="min-w-full border border-gray-700">
+                    <thead>
+                        <tr className="border border-gray-700 text-white uppercase text-lg leading-normal">
+                            <th className="py-3 px-6 text-left">Classement</th>
+                            <th className="py-3 px-6 text-left">Récompense</th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-white text-sm font-light">
+                        <tr className="border-b font-normal text-lg border-gray-700">
+                            <td className="py-3 px-6">🥇 1er</td>
+                            <td className="py-3 px-6">50€</td>
+                        </tr>
+                        <tr className="border-b font-normal text-lg border-gray-700">
+                            <td className="py-3 px-6">🥈 2ème</td>
+                            <td className="py-3 px-6">25€</td>
+                        </tr>
+                        <tr className="border-b font-normal text-lg border-gray-700">
+                            <td className="py-3 px-6">🥉 3ème</td>
+                            <td className="py-3 px-6">15€</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
+        <div className='lg:mr-10'>
+        <Timer />
+        </div>
+    </div>
+
             {showPopup && <SoloQChallengePopup togglePopup={togglePopup} />}
             {/* Pop-up */}
             {/* Deuxième conteneur pour le tableau des joueurs */}
@@ -197,7 +222,6 @@ const GetDataAccount = () => {
                                         <th className="py-3 px-6 text-left">Classement</th>
                                         <th className="py-3 px-6 text-left">Nom</th>
                                         <th className="py-3 px-6 text-left">Pseudo</th>
-                                        <th className="py-3 px-6 text-left">Team</th>
                                         <th className="py-3 px-6 text-left">Rank</th>
                                         <th className="py-3 px-6 text-left">Matchs</th>
                                         <th className="py-3 px-6 text-left">Victoire</th>
@@ -208,12 +232,11 @@ const GetDataAccount = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="text-white text-sm font-light">
-                                    {summonerData.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; team: string; wins: number; losses: number; twitch: string; opgg: string | null }, index) => (
+                                    {summonerData.map((data: { tier: keyof typeof tierImages; rank: string; leaguePoints: number; name: string; pseudo: string; tag: string; wins: number; losses: number; twitch: string; opgg: string | null }, index) => (
                                         <tr key={index} className="border-b font-normal text-lg border-gray-700">
                                             <td className="py-3 px-6">{index + 1}</td> {/* Afficher le classement */}
                                             <td className="py-3 px-6">{data.name}</td>
                                             <td className="py-3 px-6">{data.pseudo}#{data.tag}</td>
-                                            <td className="py-3 px-6">{data.team}</td>
                                             <td className="py-3 px-6 flex items-center">
                                                 {/* Afficher l'image du tier */}
                                                 <img

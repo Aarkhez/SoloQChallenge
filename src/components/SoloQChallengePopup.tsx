@@ -7,18 +7,15 @@ const SoloQChallengePopup = ({ togglePopup } :any) => {
                     </h2>
     
                     <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">GRIND LA SOLOQ</span></p>
-                    <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">25 GAMES PAR SEMAINE</span></p>
-                    <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">8 JOUEURS</span></p>
-                    <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">4 EQUIPES</span></p>
+                    <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">20 GAMES PAR SEMAINE</span></p>
+                    <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">9 JOUEURS</span></p>
+                    <p className="text-lg mb-4 font-semibold tracking-wide">- <span className="text-yellow-300">90€ de CashPrize</span></p>
     
                     <p className="text-2xl font-bold mt-8 text-center uppercase tracking-wider text-pink-200">Objectifs :</p>
                     
                     <ul className="list-disc ml-8 mt-4 space-y-3 text-lg tracking-wide">
                         <li className="hover:text-yellow-300 transition-colors duration-200">
-                            <span className="font-semibold">ETRE LE MEILLEUR JOUEUR</span> DU SOLOQ CHALLENGE
-                        </li>
-                        <li className="hover:text-yellow-300 transition-colors duration-200">
-                            <span className="font-semibold">RAPPORTER LE PLUS DE LPS</span> À SON EQUIPE
+                            <span className="font-semibold">ETRE LE MEILLEUR JOUEUR</span> DU SOLOQ CHALLENGE SUR 120 GAMES
                         </li>
                     </ul>
     
