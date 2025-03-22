@@ -28,7 +28,7 @@ const GetDataAccount = () => {
     const [sortOrderRank, setSortOrderRank] = useState('asc'); // 'asc' pour croissant, 'desc' pour décroissant
     const [sortOrderPoints, setSortOrderPoints] = useState('asc'); // 'asc' pour croissant, 'desc' pour décroissant
 
-    const API_KEY = "RGAPI-ba232415-8577-401b-b933-1214883b5a15"; // Pour récupérer la clé API
+    const API_KEY = import.meta.env.VITE_API_KEY; // Pour récupérer la clé API
 
     // Ordre des tiers et rangs
     const tierOrder = {
